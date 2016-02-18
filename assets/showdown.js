@@ -186,7 +186,7 @@ this.makeHtml = function(text) {
 
   // Handle github codeblocks prior to running HashHTML so that
   // HTML contained within the codeblock gets escaped propertly
-  text = _DoGithubCodeBlocks(text);
+  // text = _DoGithubCodeBlocks(text);
 
   // Turn block-level HTML blocks into hash entries
   text = _HashHTMLBlocks(text);
@@ -491,7 +491,7 @@ var _RunSpanGamut = function(text) {
 //
 
   text = _DoCodeSpans(text);
-  text = _EscapeSpecialCharsWithinTagAttributes(text);
+  // text = _EscapeSpecialCharsWithinTagAttributes(text);
   text = _EncodeBackslashEscapes(text);
 
   // Process anchor and image tags. Images must come first,
@@ -512,24 +512,24 @@ var _RunSpanGamut = function(text) {
   return text;
 }
 
-var _EscapeSpecialCharsWithinTagAttributes = function(text) {
+// var _EscapeSpecialCharsWithinTagAttributes = function(text) {
+// //
+// // Within tags -- meaning between < and > -- encode [\ ` * _] so they
+// // don't conflict with their use in Markdown for code, italics and strong.
+// //
 //
-// Within tags -- meaning between < and > -- encode [\ ` * _] so they
-// don't conflict with their use in Markdown for code, italics and strong.
+//   // Build a regex to find HTML tags and comments.  See Friedl's
+//   // "Mastering Regular Expressions", 2nd Ed., pp. 200-201.
+//   var regex = /(<[a-z\/!$]("[^"]*"|'[^']*'|[^'">])*>|<!(--.*?--\s*)+>)/gi;
 //
-
-  // Build a regex to find HTML tags and comments.  See Friedl's
-  // "Mastering Regular Expressions", 2nd Ed., pp. 200-201.
-  var regex = /(<[a-z\/!$]("[^"]*"|'[^']*'|[^'">])*>|<!(--.*?--\s*)+>)/gi;
-
-  text = text.replace(regex, function(wholeMatch) {
-    var tag = wholeMatch.replace(/(.)<\/?code>(?=.)/g,"$1`");
-    tag = escapeCharacters(tag,"\\`*_");
-    return tag;
-  });
-
-  return text;
-}
+//   text = text.replace(regex, function(wholeMatch) {
+//     var tag = wholeMatch.replace(/(.)<\/?code>(?=.)/g,"$1`");
+//     tag = escapeCharacters(tag,"\\`*_");
+//     return tag;
+//   });
+//
+//   return text;
+// }
 
 var _DoAnchors = function(text) {
 //
@@ -1134,8 +1134,8 @@ var _DoItalicsAndBold = function(text) {
   text = text.replace(/(\*\*|__)(?=\S)([^\r]*?\S[*_]*)\1/g,
     "<strong>$2</strong>");
 
-  text = text.replace(/(\*|_)(?=\S)([^\r]*?\S)\1/g,
-    "<em>$2</em>");
+  // text = text.replace(/(\*|_)(?=\S)([^\r]*?\S)\1/g,
+  //   "<em>$2</em>");
 
   return text;
 }
