@@ -37,3 +37,8 @@ margin-top: 20px;
 border-top: 1px solid #BBB;
 padding-top: 20px;
 }
+img.emoji {  
+  // Override any img styles to ensure Emojis are displayed inline
+  margin: 0px !important;
+  display: inline !important;
+}

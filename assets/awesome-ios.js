@@ -7,7 +7,9 @@ var getFileData = function(url) {
   }).done(function(data) {
     var converter = new Showdown.converter();
     var html = converter.makeHtml(data);
-    $("#content").html(html)
+    var output = emojione.shortnameToImage(html);
+    $("#content").html(output)
+
   })
 };
 
@@ -20,5 +22,8 @@ $(document).ready(function(){
           break;
         }
       };
+
     });
+
+
 });

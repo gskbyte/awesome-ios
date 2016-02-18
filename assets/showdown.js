@@ -166,6 +166,7 @@ this.makeHtml = function(text) {
   text = text.replace(/\r\n/g,"\n"); // DOS to Unix
   text = text.replace(/\r/g,"\n"); // Mac to Unix
 
+
   // Make sure text begins and ends with a couple of newlines:
   text = "\n\n" + text + "\n\n";
 
